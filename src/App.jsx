@@ -52,7 +52,15 @@ function App() {
 
     // Mini App SDK - Signal that app is ready
     useEffect(() => {
-        sdk.actions.ready();
+        const initMiniApp = async () => {
+            try {
+                await sdk.actions.ready({ disableNativeGestures: false });
+                console.log('MiniApp SDK ready called successfully');
+            } catch (error) {
+                console.log('Not running in MiniApp context:', error);
+            }
+        };
+        initMiniApp();
     }, []);
 
     // Auto-fill connected address
