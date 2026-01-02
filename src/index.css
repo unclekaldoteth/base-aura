@@ -1,0 +1,430 @@
+/* ========================================
+   BASE AURA - STYLES
+   Modern glassmorphism design with Base branding
+   ======================================== */
+
+:root {
+  /* Base Brand Colors */
+  --base-blue: #0052FF;
+  --base-blue-light: #3b7dff;
+  --base-blue-glow: rgba(0, 82, 255, 0.4);
+  
+  /* Aura Colors */
+  --fire: #f97316;
+  --fire-glow: rgba(249, 115, 22, 0.4);
+  --water: #06b6d4;
+  --water-glow: rgba(6, 182, 212, 0.4);
+  --tide: #14b8a6;
+  --tide-glow: rgba(20, 184, 166, 0.4);
+  --rock: #eab308;
+  --rock-glow: rgba(234, 179, 8, 0.4);
+  
+  /* UI Colors */
+  --success: #10b981;
+  --danger: #ef4444;
+  --bg-dark: #0a0a0f;
+  --bg-card: rgba(20, 20, 30, 0.8);
+  --bg-card-hover: rgba(30, 30, 45, 0.9);
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-glow: rgba(0, 82, 255, 0.3);
+  --text-primary: #ffffff;
+  --text-secondary: #a1a1aa;
+  --text-muted: #71717a;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  background: var(--bg-dark);
+  background-image:
+    radial-gradient(at 20% 30%, rgba(0, 82, 255, 0.12) 0%, transparent 50%),
+    radial-gradient(at 80% 70%, rgba(6, 182, 212, 0.08) 0%, transparent 50%),
+    radial-gradient(at 50% 50%, rgba(0, 82, 255, 0.05) 0%, transparent 60%);
+  color: var(--text-primary);
+  font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+  text-align: center;
+  padding: 40px 20px;
+}
+
+/* Main Container */
+.container {
+  max-width: 520px;
+  margin: 0 auto;
+  background: var(--bg-card);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border-subtle);
+  padding: 40px 32px;
+  border-radius: 24px;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.05),
+    0 20px 50px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+/* Header */
+.header {
+  margin-bottom: 32px;
+}
+
+h1 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--base-blue) 0%, #00D4FF 50%, var(--base-blue) 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 3s ease-in-out infinite;
+  letter-spacing: -0.02em;
+}
+
+@keyframes shimmer {
+  0%, 100% { background-position: 0% center; }
+  50% { background-position: 200% center; }
+}
+
+.subtitle {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  margin-top: 12px;
+  line-height: 1.6;
+}
+
+.network-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 16px;
+  padding: 8px 16px;
+  background: rgba(0, 82, 255, 0.15);
+  border: 1px solid rgba(0, 82, 255, 0.3);
+  border-radius: 100px;
+  font-size: 0.8rem;
+  color: var(--base-blue-light);
+}
+
+.network-badge::before {
+  content: '⬡';
+  font-size: 0.9rem;
+}
+
+/* Aura Card Display */
+.aura-section {
+  margin: 28px 0;
+}
+
+.aura-card {
+  position: relative;
+  background: linear-gradient(145deg, rgba(36, 36, 50, 0.6), rgba(27, 27, 36, 0.6));
+  border: 1px solid var(--border-subtle);
+  border-radius: 20px;
+  padding: 20px;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.aura-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, transparent 40%, rgba(0, 82, 255, 0.1) 100%);
+  pointer-events: none;
+}
+
+.aura-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--border-glow);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 60px var(--base-blue-glow);
+}
+
+.aura-card img {
+  width: 100%;
+  border-radius: 12px;
+  filter: drop-shadow(0 12px 32px rgba(0, 0, 0, 0.4));
+}
+
+.aura-title {
+  margin-top: 16px;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  letter-spacing: 0.02em;
+}
+
+/* Input Styles */
+input[type="text"] {
+  width: 100%;
+  padding: 16px 20px;
+  font-size: 0.95rem;
+  font-family: 'JetBrains Mono', monospace;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  color: var(--text-primary);
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+input[type="text"]::placeholder {
+  color: var(--text-muted);
+}
+
+input[type="text"]:focus {
+  border-color: var(--base-blue);
+  box-shadow: 0 0 0 3px var(--base-blue-glow), 0 0 20px var(--base-blue-glow);
+}
+
+/* Button Styles */
+button {
+  position: relative;
+  padding: 16px 32px;
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: 'Outfit', sans-serif;
+  cursor: pointer;
+  border: none;
+  border-radius: 12px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--base-blue) 0%, var(--base-blue-light) 100%);
+  color: white;
+  box-shadow: 0 4px 20px var(--base-blue-glow);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px var(--base-blue-glow);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-scan {
+  width: 100%;
+  background: linear-gradient(135deg, var(--base-blue) 0%, #00D4FF 100%);
+  color: white;
+  font-weight: 700;
+  box-shadow: 0 4px 20px var(--base-blue-glow);
+}
+
+.btn-scan:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px var(--base-blue-glow);
+}
+
+.btn-mint {
+  width: 100%;
+  background: linear-gradient(135deg, var(--success) 0%, #34d399 100%);
+  color: white;
+  box-shadow: 0 4px 20px rgba(16, 185, 129, 0.4);
+}
+
+.btn-mint:hover {
+  box-shadow: 0 8px 30px rgba(16, 185, 129, 0.5);
+}
+
+.btn-update {
+  background: linear-gradient(135deg, var(--base-blue) 0%, var(--base-blue-light) 100%);
+  color: white;
+}
+
+.btn-upgrade {
+  width: 100%;
+  background: linear-gradient(135deg, #8b5cf6 0%, #a78bfa 100%);
+  color: white;
+  box-shadow: 0 4px 20px rgba(139, 92, 246, 0.4);
+}
+
+.btn-upgrade:hover {
+  box-shadow: 0 8px 30px rgba(139, 92, 246, 0.5);
+  transform: translateY(-2px);
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+/* Wallet Section */
+.wallet-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--border-subtle);
+  border-radius: 16px;
+  padding: 16px 20px;
+  margin-top: 24px;
+}
+
+.wallet-info {
+  text-align: left;
+}
+
+.wallet-status {
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  margin-top: 4px;
+}
+
+.wallet-status.connected {
+  color: var(--success);
+}
+
+/* Scan Section */
+.scan-section {
+  margin-top: 28px;
+}
+
+.scan-section input {
+  margin-bottom: 16px;
+}
+
+/* Loading */
+.loading {
+  padding: 20px;
+  color: var(--base-blue);
+  font-weight: 500;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* Result Area */
+.result-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  margin-top: 32px;
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.aura-result-title {
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  text-shadow: 0 0 40px currentColor;
+}
+
+.aura-result-title.fire { color: var(--fire); }
+.aura-result-title.water { color: var(--water); }
+.aura-result-title.tide { color: var(--tide); }
+.aura-result-title.rock { color: var(--rock); }
+
+.result-card-img {
+  width: 100%;
+  max-width: 360px;
+  border-radius: 16px;
+  border: 3px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s ease;
+}
+
+.result-card-img:hover {
+  transform: scale(1.02);
+}
+
+.stats {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  line-height: 1.8;
+}
+
+/* NFT Status */
+.nft-status {
+  background: rgba(0, 82, 255, 0.1);
+  border: 1px solid rgba(0, 82, 255, 0.3);
+  border-radius: 12px;
+  padding: 16px 20px;
+  margin-top: 20px;
+  width: 100%;
+}
+
+.nft-status .token-label {
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+}
+
+.nft-status .aura-label {
+  color: var(--base-blue);
+  font-weight: 600;
+  margin-top: 4px;
+}
+
+/* Transaction Status */
+.tx-status {
+  margin-top: 16px;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  min-height: 24px;
+}
+
+.tx-status a {
+  color: #60a5fa;
+  text-decoration: none;
+}
+
+.tx-status a:hover {
+  text-decoration: underline;
+}
+
+/* Action Buttons */
+.action-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  max-width: 320px;
+  margin-top: 20px;
+}
+
+/* Responsive */
+@media (max-width: 540px) {
+  body {
+    padding: 20px 16px;
+  }
+
+  .container {
+    padding: 28px 20px;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  .wallet-section {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .wallet-info {
+    text-align: center;
+  }
+}
+
+/* RainbowKit Overrides */
+[data-rk] button {
+  font-family: 'Outfit', sans-serif !important;
+}
