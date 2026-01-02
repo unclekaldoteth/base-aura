@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 import { useAccount, useWriteContract, useWaitForTransactionReceipt, useReadContract } from 'wagmi';
 import { parseAbi } from 'viem';
+import { sdk } from '@farcaster/miniapp-sdk';
 
 // NFT Images - Supabase Storage
 const AURA_IMAGES = {
@@ -20,7 +21,7 @@ const AURA_CONFIG = {
 };
 
 // Contract address - V2 with target address tracking
-const CONTRACT_ADDRESS = '0xF105DAeF021Ce4613e0A4599D001a6767A4018DF'; // Will update after V2 deploy
+const CONTRACT_ADDRESS = '0xF105DAeF021Ce4613e0A4599D001a6767A4018DF';
 const CONTRACT_ABI = parseAbi([
     'function mint(address targetAddress, string auraType) public',
     'function updateAura(uint256 tokenId, string newAura) public',
@@ -48,6 +49,11 @@ function App() {
     const { isLoading: isUpdateConfirming, isSuccess: isUpdateConfirmed } = useWaitForTransactionReceipt({
         hash: updateHash,
     });
+
+    // Mini App SDK - Signal that app is ready
+    useEffect(() => {
+        sdk.actions.ready();
+    }, []);
 
     // Auto-fill connected address
     useEffect(() => {

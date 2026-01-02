@@ -1,0 +1,37 @@
+{
+    "accountAssociation": {
+        "header": "",
+        "payload": "",
+        "signature": ""
+    },
+    "miniapp": {
+        "version": "1",
+        "name": "Base Aura",
+        "homeUrl": "https://base-aura.vercel.app",
+        "iconUrl": "https://esolvhnpvfoavgycrwgy.supabase.co/storage/v1/object/public/base-aura/images/collection.png",
+        "splashImageUrl": "https://esolvhnpvfoavgycrwgy.supabase.co/storage/v1/object/public/base-aura/images/collection.png",
+        "splashBackgroundColor": "#0a0a0f",
+        "subtitle": "Discover Your On-Chain Identity",
+        "description": "Track your Base transaction history and mint unique dynamic NFTs based on your on-chain activity. Upgrade your NFT as you increase your transactions.",
+        "screenshotUrls": [
+            "https://esolvhnpvfoavgycrwgy.supabase.co/storage/v1/object/public/base-aura/images/fire.png",
+            "https://esolvhnpvfoavgycrwgy.supabase.co/storage/v1/object/public/base-aura/images/water.png",
+            "https://esolvhnpvfoavgycrwgy.supabase.co/storage/v1/object/public/base-aura/images/tide.png",
+            "https://esolvhnpvfoavgycrwgy.supabase.co/storage/v1/object/public/base-aura/images/rock.png"
+        ],
+        "primaryCategory": "social",
+        "tags": [
+            "nft",
+            "base",
+            "aura",
+            "identity",
+            "dynamic-nft"
+        ],
+        "heroImageUrl": "https://esolvhnpvfoavgycrwgy.supabase.co/storage/v1/object/public/base-aura/images/collection.png",
+        "tagline": "Mint Your Aura",
+        "ogTitle": "Base Aura - Discover Your On-Chain Identity",
+        "ogDescription": "Track your Base transaction history and mint unique dynamic NFTs.",
+        "ogImageUrl": "https://esolvhnpvfoavgycrwgy.supabase.co/storage/v1/object/public/base-aura/images/collection.png",
+        "noindex": false
+    }
+}
