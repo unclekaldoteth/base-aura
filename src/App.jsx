@@ -20,8 +20,8 @@ const AURA_CONFIG = {
     rock: { name: 'Rock Holder', emoji: '🪨', tagline: 'Diamond Hands HODLer', minTx: 1, tier: 1 },
 };
 
-// Contract address - V2 with target address tracking
-const CONTRACT_ADDRESS = '0xF105DAeF021Ce4613e0A4599D001a6767A4018DF';
+// Contract address - V2 with target address tracking (Base Mainnet)
+const CONTRACT_ADDRESS = '0x810BFa0A3aEa3aF7187a853A75f9827bD213f5b4';
 const CONTRACT_ABI = parseAbi([
     'function mint(address targetAddress, string auraType) public',
     'function updateAura(uint256 tokenId, string newAura) public',

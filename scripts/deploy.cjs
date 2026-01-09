@@ -7,7 +7,11 @@ async function main() {
     console.log("Base Image URI:", baseImageURI);
 
     const BaseAuraV2 = await hre.ethers.getContractFactory("BaseAuraV2");
-    const baseAura = await BaseAuraV2.deploy(baseImageURI);
+
+    // Deploy with explicit gas limit to avoid estimation issues
+    const baseAura = await BaseAuraV2.deploy(baseImageURI, {
+        gasLimit: 3000000n,
+    });
 
     await baseAura.waitForDeployment();
 
@@ -15,7 +19,7 @@ async function main() {
     console.log("\n✅ BaseAuraV2 deployed to:", contractAddress);
     console.log("\n📋 Next steps:");
     console.log("1. Copy this address to src/App.jsx CONTRACT_ADDRESS");
-    console.log("2. Verify contract: npx hardhat verify --network baseSepolia", contractAddress, `"${baseImageURI}"`);
+    console.log("2. Verify contract: npx hardhat verify --network baseMainnet", contractAddress, `"${baseImageURI}"`);
 }
 
 main()
