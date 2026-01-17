@@ -6,3 +6,8 @@ dist/
 artifacts/
 cache/
 .vercel
+
+backend/.key.local
+backend/_progress.json
+backend/_mint.pid
+backend/content.json

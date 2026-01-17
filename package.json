@@ -10,9 +10,14 @@
     "compile": "hardhat --config hardhat.config.cjs compile",
     "deploy": "hardhat --config hardhat.config.cjs run scripts/deploy.cjs --network baseSepolia",
     "deploy:mainnet": "hardhat --config hardhat.config.cjs run scripts/deploy.cjs --network baseMainnet",
-    "verify": "hardhat --config hardhat.config.cjs verify --network baseSepolia"
+    "verify": "hardhat --config hardhat.config.cjs verify --network baseSepolia",
+    "fetch:addresses": "node backend/fetch-addresses.mjs",
+    "mint:once": "node backend/mint-once.mjs",
+    "mint:batch": "node backend/mint-batch.mjs",
+    "mint:stop": "node backend/mint-stop.mjs"
   },
   "dependencies": {
+    "@coinbase/onchainkit": "^0.16.0",
     "@farcaster/miniapp-sdk": "^0.2.1",
     "@rainbow-me/rainbowkit": "^2.1.0",
     "@tanstack/react-query": "^5.28.0",

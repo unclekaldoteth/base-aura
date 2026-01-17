@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { ConnectButton } from '@rainbow-me/rainbowkit';
+import { ConnectWallet, Wallet, WalletDropdown, WalletDropdownDisconnect } from '@coinbase/onchainkit/wallet';
 import { useAccount, useWriteContract, useWaitForTransactionReceipt, useReadContract } from 'wagmi';
 import { parseAbi } from 'viem';
 import { sdk } from '@farcaster/miniapp-sdk';
@@ -233,7 +233,12 @@ function App() {
                         {isConnected ? `Connected: ${address?.slice(0, 6)}...${address?.slice(-4)}` : 'Not connected'}
                     </p>
                 </div>
-                <ConnectButton />
+                <Wallet>
+                    <ConnectWallet />
+                    <WalletDropdown>
+                        <WalletDropdownDisconnect />
+                    </WalletDropdown>
+                </Wallet>
             </div>
 
             {/* Scan Section - Only show when connected */}
