@@ -1,4 +1,3 @@
-import '@coinbase/onchainkit/styles.css';
 import { OnchainKitProvider } from '@coinbase/onchainkit';
 import { getDefaultConfig } from '@rainbow-me/rainbowkit';
 import { baseAccount, metaMaskWallet, rainbowWallet, safeWallet, walletConnectWallet } from '@rainbow-me/rainbowkit/wallets';

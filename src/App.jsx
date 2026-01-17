@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { ConnectWallet, Wallet, WalletDropdown, WalletDropdownDisconnect } from '@coinbase/onchainkit/wallet';
 import { useAccount, useWriteContract, useWaitForTransactionReceipt, useReadContract } from 'wagmi';
-import { parseAbi } from 'viem';
+import { parseAbi, parseEther } from 'viem';
 import { sdk } from '@farcaster/miniapp-sdk';
 
 // NFT Images - Supabase Storage
@@ -21,7 +21,8 @@ const AURA_CONFIG = {
 };
 
 // Contract address - V2 with target address tracking (Base Mainnet)
-const CONTRACT_ADDRESS = '0x810BFa0A3aEa3aF7187a853A75f9827bD213f5b4';
+const CONTRACT_ADDRESS = import.meta.env.VITE_CONTRACT_ADDRESS || '0x810BFa0A3aEa3aF7187a853A75f9827bD213f5b4';
+const MINT_FEE = parseEther('0.00001');
 const CONTRACT_ABI = parseAbi([
     'function mint(address targetAddress, string auraType) public',
     'function updateAura(uint256 tokenId, string newAura) public',
@@ -183,6 +184,7 @@ function App() {
             abi: CONTRACT_ABI,
             functionName: 'mint',
             args: [scanResult.address, scanResult.auraType],
+            value: MINT_FEE,
         });
     };
 

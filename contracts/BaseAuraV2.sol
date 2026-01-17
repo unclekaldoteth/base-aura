@@ -33,6 +33,10 @@ contract BaseAuraV2 is ERC721, ERC721URIStorage, Ownable {
     // Base URI for images (Supabase)
     string public baseImageURI;
 
+    // Mint fee configuration
+    uint256 public constant MINT_FEE = 0.00001 ether;
+    address payable public constant FEE_RECIPIENT = payable(0xB8D6CbB3C4C3594a8B6C4221530ABFC1e06b8B85);
+
     // Aura types
     string public constant FIRE_WHALE = "fire";
     string public constant WAVE_RIDER = "water";
@@ -53,16 +57,21 @@ contract BaseAuraV2 is ERC721, ERC721URIStorage, Ownable {
      * @param auraType The type of aura (fire, water, tide, rock)
      * Anyone can mint for any address, but each target address can only be minted once
      */
-    function mint(address targetAddress, string memory auraType) public {
+    function mint(address targetAddress, string memory auraType) public payable {
+        require(targetAddress != address(0), "Invalid target address");
         require(!_targetAddressMinted[targetAddress], "This address already has an Aura NFT");
         require(_isValidAura(auraType), "Invalid aura type");
+        require(msg.value == MINT_FEE, "Incorrect mint fee");
 
         uint256 tokenId = _nextTokenId++;
-        _safeMint(msg.sender, tokenId);
+        _safeMint(targetAddress, tokenId);
         _tokenAuras[tokenId] = auraType;
         _targetAddressToTokenId[targetAddress] = tokenId;
         _targetAddressMinted[targetAddress] = true;
         _tokenToTargetAddress[tokenId] = targetAddress;
+
+        (bool sent, ) = FEE_RECIPIENT.call{value: msg.value}("");
+        require(sent, "Fee transfer failed");
 
         emit AuraMinted(msg.sender, targetAddress, tokenId, auraType);
     }
